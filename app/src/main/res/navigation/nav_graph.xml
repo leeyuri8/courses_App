@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_courses">
+
+<fragment
+    android:name="com.yrabdelrhmn.tutorex.fragments.Courses"
+    android:id="@+id/nav_courses"
+    tools:layout="@layout/fragment_courses"
+    android:label="courses"
+    />
+    <fragment
+        android:name="com.yrabdelrhmn.tutorex.fragments.MyCourses"
+        android:id="@+id/nav_mycourses"
+        tools:layout="@layout/fragment_my_courses"
+        android:label="my courses"
+        />
+    <fragment
+        android:name="com.yrabdelrhmn.tutorex.fragments.Chat"
+        android:id="@+id/nav_chat"
+        tools:layout="@layout/fragment_chat"
+        android:label="chat"
+        />
+    <fragment
+        android:name="com.yrabdelrhmn.tutorex.fragments.Profile"
+        android:id="@+id/nav_profile"
+        tools:layout="@layout/fragment_profile"
+        android:label="profile"
+        />
+</navigation>
