@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yrabdelrhmn.tutorex">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,12 +11,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Tutorex">
-        <activity android:name=".activity.AddCourse" />
+        android:theme="@style/Theme.Tutorex"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.StudentActivity" />
+        <!-- <activity android:name=".auth.Login" /> -->
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"></activity>
-        <activity android:name=".Register" />
+            android:name=".lecturer.HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="ExtraText" />
+        <activity
+            android:name=".lecturer.AddCourse"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".auth.Register"
+            android:exported="true" />
+        <activity
+            android:name=".student.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -28,17 +41,24 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-        <service
-            android:name=".MyFirebaseMessagingService"
-            android:exported="false">
+        <service android:name=".notification.MyFirebaseMessagingService"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".notification.MyFirebaseInstanceIDService"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

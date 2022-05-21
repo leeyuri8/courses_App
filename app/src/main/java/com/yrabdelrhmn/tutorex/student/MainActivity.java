@@ -1,25 +1,18 @@
-package com.yrabdelrhmn.tutorex;
+package com.yrabdelrhmn.tutorex.student;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yrabdelrhmn.tutorex.R;
-import com.yrabdelrhmn.tutorex.fragments.Chat;
-import com.yrabdelrhmn.tutorex.fragments.Courses;
-import com.yrabdelrhmn.tutorex.fragments.MyCourses;
-import com.yrabdelrhmn.tutorex.fragments.Profile;
+import com.yrabdelrhmn.tutorex.User.fragments.Chat;
+import com.yrabdelrhmn.tutorex.User.fragments.Courses;
+import com.yrabdelrhmn.tutorex.User.fragments.MyCourses;
+import com.yrabdelrhmn.tutorex.User.fragments.Profile;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
        bottomNavigationView = findViewById(R.id.bottomNavigationView);
        bottomNavigationView.setOnNavigationItemSelectedListener(this);
        bottomNavigationView.setSelectedItemId(R.id.courses);
-
-
 
     }
     Courses courses = new Courses();

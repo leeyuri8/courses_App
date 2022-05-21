@@ -11,6 +11,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.yrabdelrhmn.tutorex.auth.Register;
+import com.yrabdelrhmn.tutorex.student.MainActivity;
+
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
 
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -31,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), Register.class);
                 startActivity(i);
                 Log.d("Handler", "Running Handler");
             }

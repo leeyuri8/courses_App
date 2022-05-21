@@ -6,25 +6,25 @@
     app:startDestination="@+id/nav_courses">
 
 <fragment
-    android:name="com.yrabdelrhmn.tutorex.fragments.Courses"
+    android:name="com.yrabdelrhmn.tutorex.User.fragments.Courses"
     android:id="@+id/nav_courses"
     tools:layout="@layout/fragment_courses"
     android:label="courses"
     />
     <fragment
-        android:name="com.yrabdelrhmn.tutorex.fragments.MyCourses"
+        android:name="com.yrabdelrhmn.tutorex.User.fragments.MyCourses"
         android:id="@+id/nav_mycourses"
         tools:layout="@layout/fragment_my_courses"
         android:label="my courses"
         />
     <fragment
-        android:name="com.yrabdelrhmn.tutorex.fragments.Chat"
+        android:name="com.yrabdelrhmn.tutorex.User.fragments.Chat"
         android:id="@+id/nav_chat"
         tools:layout="@layout/fragment_chat"
         android:label="chat"
         />
     <fragment
-        android:name="com.yrabdelrhmn.tutorex.fragments.Profile"
+        android:name="com.yrabdelrhmn.tutorex.User.fragments.Profile"
         android:id="@+id/nav_profile"
         tools:layout="@layout/fragment_profile"
         android:label="profile"

@@ -1,10 +1,8 @@
-package com.yrabdelrhmn.tutorex.fragments;
+package com.yrabdelrhmn.tutorex.User.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,11 +20,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.yrabdelrhmn.tutorex.R;
-import com.yrabdelrhmn.tutorex.activity.AddCourse;
-import com.yrabdelrhmn.tutorex.adapter.CourseAdapter;
+import com.yrabdelrhmn.tutorex.adapter.UserCourseAdapter;
 import com.yrabdelrhmn.tutorex.model.CourseInfo;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +36,7 @@ public class Courses extends Fragment {
     private Context mContext;
     private Button joinBtn;
     private ArrayList<CourseInfo> coursesList;
-    private CourseAdapter courseAdapter = null;
+    private UserCourseAdapter userCourseAdapter = null;
     CourseInfo model;
     SearchView searchView;
     FloatingActionButton addBtn;
@@ -60,15 +56,16 @@ public class Courses extends Fragment {
 
         mContext = container.getContext();
         addBtn = root.findViewById(R.id.addCourse);
-
+        text = searchView.getQuery().toString();
         FirebaseApp.initializeApp(mContext);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AddCourse.class));
-            }
-        });
+//
+//        addBtn.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(), AddCourse.class));
+//            }
+//        });
 
         return root;
     }
@@ -77,50 +74,37 @@ public class Courses extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getCourses();
-        //search(text);
-    }
+          getCourses();
 
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    search(s);
+                    return true;
+                }
+            });
+        }
+    }
 
 
     private void search(String newText) {
-     ArrayList <CourseInfo> filterdList = new ArrayList<>();
-        Query query = databaseReference.orderByChild("coursename").startAt(newText.toLowerCase())
-                .endAt(newText.toLowerCase()+ "\uf8ff");
-
-
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.hasChildren()){
-                    filterdList.clear();
-
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        final  CourseInfo course = dataSnapshot.getValue(CourseInfo.class);
-                        filterdList.add(course);
-
-
-                    }
-                    courseAdapter = new CourseAdapter(mContext,(ArrayList<CourseInfo>) coursesList);
-                    courseAdapter.filterList(filterdList);
-                    recyclerView.setAdapter(courseAdapter);
-                    courseAdapter.notifyDataSetChanged();
-
-                }
-                else {
-                    Toast.makeText(mContext,"Course does not found!",Toast.LENGTH_SHORT).show();
-                }
-
-                }
-
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+        ArrayList<CourseInfo> mylist = new ArrayList<>();
+        for (CourseInfo object : coursesList){
+            if (object.getCourseName().toLowerCase().contains(newText.toLowerCase())){
+                        mylist.add(object);
             }
-        });
+            UserCourseAdapter userCourseAdapter = new UserCourseAdapter(mContext,mylist);
+            recyclerView.setAdapter(userCourseAdapter);
+        }
 
     }
+
     private void getCourses(){
         coursesList = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
@@ -140,9 +124,9 @@ public class Courses extends Fragment {
         for (DataSnapshot dataSnapshot : snapshot.getChildren()){
         CourseInfo courseInfo = dataSnapshot.getValue(CourseInfo.class);
         coursesList.add(courseInfo);
-        courseAdapter = new CourseAdapter(mContext,(ArrayList<CourseInfo>) coursesList);
-        recyclerView.setAdapter(courseAdapter);
-        courseAdapter.notifyDataSetChanged();
+        userCourseAdapter = new UserCourseAdapter(mContext,(ArrayList<CourseInfo>) coursesList);
+        recyclerView.setAdapter(userCourseAdapter);
+        userCourseAdapter.notifyDataSetChanged();
 
         }
         }
@@ -155,6 +139,7 @@ public class Courses extends Fragment {
 
         );
     }
+
 
 
 }
