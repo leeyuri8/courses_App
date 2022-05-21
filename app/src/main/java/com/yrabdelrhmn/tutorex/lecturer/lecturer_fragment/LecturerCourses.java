@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.yrabdelrhmn.tutorex.R;
 import com.yrabdelrhmn.tutorex.lecturer.AddCourse;
 import com.yrabdelrhmn.tutorex.adapter.LecturerCourseAdapter;
 import com.yrabdelrhmn.tutorex.model.CourseInfo;
