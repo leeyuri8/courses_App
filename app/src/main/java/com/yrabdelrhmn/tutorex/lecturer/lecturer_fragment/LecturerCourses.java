@@ -1,18 +1,18 @@
 package com.yrabdelrhmn.tutorex.lecturer.lecturer_fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
@@ -22,8 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yrabdelrhmn.tutorex.R;
-import com.yrabdelrhmn.tutorex.lecturer.AddCourse;
 import com.yrabdelrhmn.tutorex.adapter.LecturerCourseAdapter;
+import com.yrabdelrhmn.tutorex.lecturer.AddCourse;
 import com.yrabdelrhmn.tutorex.model.CourseInfo;
 
 import org.jetbrains.annotations.NotNull;
@@ -93,6 +93,7 @@ public class LecturerCourses extends Fragment {
         DatabaseReference myCourses = FirebaseDatabase.getInstance().getReference().child("mycourses");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
 
             public void onDataChange( @NotNull DataSnapshot snapshot) {

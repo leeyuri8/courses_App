@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".User.fragments.Courses">
+    tools:context="com.yrabdelrhmn.tutorex.User.fragments.Courses">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

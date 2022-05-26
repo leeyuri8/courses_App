@@ -4,39 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.Register">
+    tools:context="com.yrabdelrhmn.tutorex.auth.Register">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="252dp"
+        android:layout_width="356dp"
+        android:layout_height="235dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tt" />
+        app:srcCompat="@drawable/course" />
 
 
     <View
         android:id="@+id/view"
-        android:layout_width="398dp"
-        android:layout_height="537dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="374dp"
+        android:layout_height="486dp"
         android:background="@drawable/radius"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="173dp"
         android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/abeezee"
+        android:layout_marginTop="36dp"
+        android:fontFamily="serif"
         android:text="Welcome!"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#243C3A"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,8 +46,8 @@
         android:id="@+id/RGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="156dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView">
 
@@ -58,8 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Lecturer"
-            android:textColor="#154"
-            android:textSize="20sp"
+            android:textColor="#383E3D"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Student"
-            android:textColor="#154"
-            android:textSize="20sp"
+            android:textColor="#383E3D"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +81,10 @@
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/btn"
         android:ems="10"
+        android:textSize="15sp"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:paddingStart="20dp"
@@ -98,9 +98,11 @@
             android:id="@+id/editTextTextPassword"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:paddingStart="20dp"
-            android:ems="10"
+           android:textSize="15sp"
+
+             android:ems="10"
             android:hint="Password"
             android:background="@drawable/btn"
             android:inputType="textPassword"
@@ -109,38 +111,55 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/materialDivider"
-        android:layout_width="200dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
+
+    <EditText
+        android:id="@+id/editTextTextName"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="15sp"
+
+        android:background="@drawable/btn"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+
+    <EditText
+        android:id="@+id/editTextTextMobile"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:ems="10"
+        android:hint="Mobile"
+        android:textSize="15sp"
+
+        android:background="@drawable/btn"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
 
     <Button
         android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="84dp"
-        android:backgroundTint="#673AB7"
-
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#FFFFFF"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+        android:textColor="#243C3A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextTextMobile" />
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="#673AB7"
-        android:text="Login"
-        app:layout_constraintEnd_toStartOf="@id/register_btn"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

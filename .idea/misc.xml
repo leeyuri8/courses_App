@@ -3,11 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.242" />
         <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/btn.xml" value="0.1335" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/edit.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2185" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_family_restroom_24.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_ondemand_video_24.xml" value="0.2185" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.1595" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/ic_baseline_videocam_24.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/person.xml" value="0.242" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/pro_back.xml" value="0.1595" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/drawable/radius.xml" value="0.226" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_home_page.xml" value="0.25343999226562525" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_main.xml" value="0.24175824175824176" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_register.xml" value="0.19199999414062519" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_student.xml" value="0.10714285714285714" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_upload_word.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/activity_video_course.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/courses_layout.xml" value="0.25343999226562525" />
         <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_lecturer_profile.xml" value="0.14635416666666667" />
-        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/lect_courses_layout.xml" value="0.13179347826086957" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_courses.xml" value="0.2359375" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_lecturer_courses.xml" value="0.11474164133738601" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_lecturer_profile.xml" value="0.19199999414062519" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_profile.xml" value="0.19199999414062519" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/fragment_students.xml" value="0.13179347826086957" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/lect_courses_layout.xml" value="0.25343999226562525" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/my_courses_layout.xml" value="0.19199999414062519" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/notification_layout.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/pdf_upload.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/register.xml" value="0.13179347826086957" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/layout/students_layout.xml" value="0.21927083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/menu/action.xml" value="0.23229166666666667" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/menu/lecturer_nav.xml" value="0.18703703703703703" />
+        <entry key="..\:/AndroidStudioProjects/Tutorex/app/src/main/res/menu/nav_menu.xml" value="0.18703703703703703" />
       </map>
     </option>
   </component>

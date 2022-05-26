@@ -1,8 +1,5 @@
 package com.yrabdelrhmn.tutorex.lecturer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-//import com.yrabdelrhmn.tutorex.FirebaseMessageReceiver;
-//import com.yrabdelrhmn.tutorex.notification.MyFirebaseMessagingService;
-import com.yrabdelrhmn.tutorex.student.MainActivity;
+import com.yrabdelrhmn.tutorex.FirebaseMessageReceiver;
 import com.yrabdelrhmn.tutorex.R;
 import com.yrabdelrhmn.tutorex.adapter.UserCourseAdapter;
 import com.yrabdelrhmn.tutorex.model.CourseInfo;
@@ -37,6 +35,7 @@ public class AddCourse extends AppCompatActivity {
     //RecyclerView recyclerView;
     private ArrayList<CourseInfo> coursesList;
     private UserCourseAdapter userCourseAdapter = null;
+    FirebaseMessageReceiver receiver ;
    // MyFirebaseMessagingService service = new MyFirebaseMessagingService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +46,11 @@ public class AddCourse extends AppCompatActivity {
         courseType = findViewById(R.id.course_type);
         courseImage = findViewById(R.id.course_image);
         add = findViewById(R.id.add_btn);
+        receiver= new FirebaseMessageReceiver();
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("courses");
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +74,7 @@ public class AddCourse extends AppCompatActivity {
                       
                        Toast.makeText(AddCourse.this, "Added!", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(AddCourse.this,MainActivity.class));
+                        startActivity(new Intent(AddCourse.this,HomePage.class));
                     }
 
                     @Override
@@ -84,6 +83,7 @@ public class AddCourse extends AppCompatActivity {
 
                     }
                 });
+                receiver.showNotification("Success","Added Successfully");
 
             }
         });

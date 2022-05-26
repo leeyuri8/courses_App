@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <item
         android:id="@+id/courses_lecturer"
@@ -7,9 +8,9 @@
         android:title="Courses"
         />
     <item
-        android:id="@+id/analytics"
+        android:id="@+id/Students"
         android:icon="@drawable/ic_baseline_analytics_24"
-        android:title="Analytics" />
+        android:title="Students" />
 
 
 

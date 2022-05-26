@@ -1,8 +1,5 @@
 package com.yrabdelrhmn.tutorex.auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +9,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,18 +30,15 @@ import com.yrabdelrhmn.tutorex.student.Student;
 
 import org.jetbrains.annotations.NotNull;
 
-import static com.yrabdelrhmn.tutorex.utilites.Constant.KEY_EMAIL;
-import static com.yrabdelrhmn.tutorex.utilites.Constant.KEY_password;
-
 public class Register extends AppCompatActivity  {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     Button registerBtn , loginBtn;
-    EditText email,pass;
+    EditText email,pass, name , mobile;
     RadioButton lecturer, student;
     RadioGroup radioGroup;
 //    String lecturerid , studentid;
-    String userEmail,userPass;
+    String userEmail,userPass, userName ,  userMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +46,15 @@ public class Register extends AppCompatActivity  {
         setContentView(R.layout.activity_register);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         //  loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
         email = findViewById(R.id.editTextTextEmailAddress);
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.RGroup);
+
         pass = findViewById(R.id.editTextTextPassword);
+        name = findViewById(R.id.editTextTextName);
+        mobile = findViewById(R.id.editTextTextMobile);
+
         lecturer = findViewById(R.id.radio1);
         student = findViewById(R.id.radio2);
 
@@ -86,9 +86,8 @@ public class Register extends AppCompatActivity  {
    private void registerLecturer(){
        userEmail = email.getText().toString();
        userPass = pass.getText().toString();
-
-       userEmail = KEY_EMAIL;
-       userPass = KEY_password;
+       userName = name.getText().toString();
+       userMobile = mobile.getText().toString();
 
        if (TextUtils.isEmpty(userEmail)) {
            Toast.makeText(getApplicationContext(),
@@ -110,11 +109,9 @@ public class Register extends AppCompatActivity  {
                    public void onComplete( @NotNull Task<AuthResult> task) {
                        if (task.isSuccessful()) {
                            Toast.makeText(Register.this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                         addDataLecturer(userEmail);
-                           startActivity(new Intent(Register.this,HomePage.class));
-
-
-                       }
+                           addDataLecturer(userEmail,userName,userMobile);
+                           startActivity(new Intent(Register.this, HomePage.class));
+                  }
                        Toast.makeText(Register.this, "Failure", Toast.LENGTH_SHORT).show();
 
 
@@ -124,6 +121,9 @@ public class Register extends AppCompatActivity  {
     private void registerStudent(){
         userEmail = email.getText().toString();
         userPass = pass.getText().toString();
+        userName = name.getText().toString();
+        userMobile = mobile.getText().toString();
+
         if (TextUtils.isEmpty(userEmail)) {
             Toast.makeText(getApplicationContext(),
                     "Please enter email!!",
@@ -143,19 +143,20 @@ public class Register extends AppCompatActivity  {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            addDataStudent(userEmail);
+                            addDataStudent(userEmail,userName,userMobile);
                             startActivity(new Intent(Register.this,MainActivity.class));
                         }
                     }
                 });
     }
-   private void addDataLecturer(String email){
+   private void addDataLecturer(String email, String name, String mobile){
        CollectionReference dbRef = firebaseFirestore.collection("lecturers");
-       LecturerModel model = new LecturerModel(email);
+       LecturerModel model = new LecturerModel(email,name,mobile);
        dbRef.add(model).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
            @Override
            public void onSuccess(DocumentReference documentReference) {
                Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
+
            }
        }).addOnFailureListener(new OnFailureListener() {
            @Override
@@ -164,9 +165,9 @@ public class Register extends AppCompatActivity  {
            }
        });
    }
-    private void addDataStudent(String email) {
+    private void addDataStudent(String email, String name, String mobile) {
         CollectionReference dbRef = firebaseFirestore.collection("students");
-        Student student = new Student(email);
+        Student student = new Student(email,name, mobile);
         dbRef.add(student).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
@@ -183,13 +184,5 @@ public class Register extends AppCompatActivity  {
 
 
 
-//    private void currentAdmin() {
-//
-//        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
-//
-//        LecturerModel newUser = new LecturerModel(firebaseUser.getEmail());
-//
-//        firebaseFirestore.collection("users").document(firebaseUser.getUid()).set(newUser);
-//
-//    }
+
 }

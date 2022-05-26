@@ -1,10 +1,12 @@
 package com.yrabdelrhmn.tutorex.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yrabdelrhmn.tutorex.R;
+
 
 public class StudentActivity extends AppCompatActivity {
 

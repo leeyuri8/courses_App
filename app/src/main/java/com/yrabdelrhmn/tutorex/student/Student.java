@@ -1,12 +1,22 @@
 package com.yrabdelrhmn.tutorex.student;
 
-import java.io.Serializable;
-
 public class Student {
     public String email;
+    public String name;
+    public String mobile;
 
-    public Student(String email) {
+    public Student(String email, String name, String mobile) {
         this.email = email;
+        this.name = name;
+        this.mobile = mobile;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

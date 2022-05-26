@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".lecturer.lecturer_fragment.LecturerCourses">
+    tools:context="com.yrabdelrhmn.tutorex.lecturer.lecturer_fragment.LecturerCourses">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -30,7 +30,6 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lect_coursesRv"
         android:layout_width="419dp"

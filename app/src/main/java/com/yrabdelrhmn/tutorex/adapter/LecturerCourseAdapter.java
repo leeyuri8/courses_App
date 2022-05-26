@@ -1,25 +1,23 @@
 package com.yrabdelrhmn.tutorex.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.yrabdelrhmn.tutorex.R;
-import com.yrabdelrhmn.tutorex.User.fragments.Courses;
 import com.yrabdelrhmn.tutorex.model.CourseInfo;
 
 import org.jetbrains.annotations.NotNull;
@@ -47,9 +45,9 @@ public class LecturerCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return new ViewHolder(view1);
         }
     public static class ViewHolder extends RecyclerView.ViewHolder {
-         private TextView courseName;
-        private  TextView courseType;
-        private  ImageView courseImage;
+         private final TextView courseName;
+        private final TextView courseType;
+        private final ImageView courseImage;
         ImageView update, delete;
 
 
@@ -64,7 +62,7 @@ public class LecturerCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
         @Override
-    public void onBindViewHolder( @NotNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
           ViewHolder lectHolder = (ViewHolder) holder;
          //   int viewType = contentList.get(position).getIsJoined();
             final CourseInfo model = contentList.get(position);
@@ -78,8 +76,8 @@ public class LecturerCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 model.setCourseimage(img);
             }
 
-            lectHolder.courseName.setText(model.getCourseName());
 
+            lectHolder.courseName.setText(model.getCourseName());
             lectHolder.courseType.setText(model.getCourseType());
             model.setCourseId(model.getCourseName());
 
@@ -94,7 +92,7 @@ public class LecturerCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    firebaseDatabase = FirebaseDatabase.getInstance();
+                                   firebaseDatabase = FirebaseDatabase.getInstance();
                                     databaseReference = firebaseDatabase.getReference("courses").child(id);
                                     databaseReference.removeValue();
                                     Toast.makeText(context, "Course Deleted Successfully!", Toast.LENGTH_SHORT).show();
@@ -110,9 +108,15 @@ public class LecturerCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     dialog.show();
                 }
             });
+//            updateCourse.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                   firebaseDatabase.getReference("courses").setValue(
+//
+//                   )
+//                }
+//            });
         }
-
-
 
     @Override
     public int getItemCount() {

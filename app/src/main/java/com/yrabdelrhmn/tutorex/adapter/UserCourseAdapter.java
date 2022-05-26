@@ -1,8 +1,10 @@
 package com.yrabdelrhmn.tutorex.adapter;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +37,8 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private final ArrayList<CourseInfo> mContentList;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+   FirebaseAnalytics mFirebaseAnalytics;
+
     String courseid;
 
     public UserCourseAdapter(Context mContext, ArrayList<CourseInfo> mContentList) {
@@ -75,7 +80,7 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private final TextView courseName;
         private final TextView courseType;
         private final ImageView courseImage;
-        Button join,left,showCourse;
+        Button join, left, showCourse;
         ImageView update, delete;
 
 
@@ -89,22 +94,20 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             update = (ImageView) itemView.findViewById(R.id.update);
             delete = (ImageView) itemView.findViewById(R.id.delete);
 
-                if (viewType == 1){
-                    showCourse = (Button) itemView.findViewById(R.id.viewCourse_btn);
-                    left = (Button) itemView.findViewById(R.id.leftCourse_btn);
-                }
+            if (viewType == 1) {
+                showCourse = (Button) itemView.findViewById(R.id.viewCourse_btn);
+                left = (Button) itemView.findViewById(R.id.leftCourse_btn);
+            }
 
         }
 
     }
 
     @Override
-    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder mainHolder, int position) {
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder mainHolder, @SuppressLint("RecyclerView") final int position) {
         mViewHolder holder = (mViewHolder) mainHolder;
         int viewType = mContentList.get(position).getIsJoined();
         final CourseInfo model = mContentList.get(position);
-
-
             String img = model.getCourseimage();
 
             // this code to display images
@@ -120,6 +123,7 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
 
+
             if (viewType == 0) {
                 Button joinBtn = holder.join;
                 //  holder.join.setVisibility(joinBtn.clic);
@@ -128,6 +132,8 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     public void onClick(View view) {
                         DatabaseReference mycoursesRef = FirebaseDatabase.getInstance().getReference().child("mycourses");
                         DatabaseReference coursesRef = FirebaseDatabase.getInstance().getReference().child("courses");
+                        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+                        Bundle bundle = new Bundle();
                         mycoursesRef.addValueEventListener(new ValueEventListener() {
                             @SuppressLint("SetTextI18n")
                             @Override
@@ -152,6 +158,8 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                                     mycoursesRef.child(id).setValue(courseInfo);
 
                                     Toast.makeText(mContext, "MyCourse Added Successfully!", Toast.LENGTH_SHORT).show();
+                                    bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,courseInfo.getCourseName());
+                                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,bundle);
 
 
                                 } else {
@@ -169,13 +177,17 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     }
                 });
 
+            }
 
-//
+
             if (viewType == 1) {
                 Button leftbtn = holder.left;
+                Button show = holder.showCourse;
                 leftbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+//                        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+//                        Bundle bundle = new Bundle();
                         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                         String id = mContentList.get(position).getCourseId();
                         builder.setTitle("Delete Course")
@@ -186,8 +198,11 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         firebaseDatabase = FirebaseDatabase.getInstance();
                                         databaseReference = firebaseDatabase.getReference("mycourses").child(id);
+                                        String deletedCourse = databaseReference.toString();
                                         databaseReference.removeValue();
                                         Toast.makeText(mContext, "You left course!", Toast.LENGTH_SHORT).show();
+                                    //    bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,deletedCourse);
+
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -200,14 +215,21 @@ public class UserCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         dialog.show();
                     }
                 });
-            }}}
+//                show.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(mContext, VideoCourse.class);
+//                        mContext.startActivity(intent);
+//                    }
+//                });
+            }
+    }
 
 
     @Override
     public int getItemCount() {
         return mContentList.size();
     }
-
 
 
     }
